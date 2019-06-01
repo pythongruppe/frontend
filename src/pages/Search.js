@@ -73,20 +73,20 @@ export default class Search extends Component {
         e.preventDefault()
         this.page(target.elements['page'].value)
     }
-    
+
     createPagination = () => {
         const pages = Math.ceil(this.state.count / 50)
 
-        return (<div class="pagination">
+        return (<div className="pagination">
             <form onSubmit={(e) => this.changePage(e)}>
-                <input name="page" type="number" step="1" min={1} max={pages} value={this.state.currentPageInput} onChange={(e) => this.setState({currentPageInput: parseInt(e.target.value)})}/>
+                <input name="page" type="number" step="1" min={1} max={pages} value={this.state.currentPageInput} onChange={(e) => this.setState({ currentPageInput: parseInt(e.target.value) })} />
             </form>
         </div>)
     }
-    
+
     render() {
 
-        const { results } = this.state;
+        const { results, statistics } = this.state;
 
         return (
 
@@ -148,11 +148,31 @@ export default class Search extends Component {
                         </tbody>
                     </table>
                 </div>
-                <div id="search-page-statistics">
+                <div id="search-page-statistics" className="pad-bottom">
                     <p>Total results: {this.state.count}</p>
                     <p>Results on page: {this.state.results.length}</p>
+                    {statistics && <table>
+                        <thead>
+                            <tr>
+                                <th> </th>
+                                {Object.keys(Object.values(statistics)[0]).map(key =>
+                                    <th>{key}</th>
+                                )}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {Object.keys(statistics).map(column =>
+                                <tr>
+                                    <th>{column}</th>
+                                    {Object.keys(statistics[column]).map(attr => 
+                                        <td>{statistics[column][attr]}</td>
+                                    )}
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>}
                 </div>
-                <div id="search-page-pagination">
+                <div id="search-page-pagination" className="pad-bottom">
                     {this.createPagination()}
                 </div>
                 <div id="search-page-results">
