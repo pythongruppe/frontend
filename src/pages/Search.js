@@ -151,7 +151,7 @@ export default class Search extends Component {
                 <div id="search-page-statistics" className="pad-bottom">
                     <p>Total results: {this.state.count}</p>
                     <p>Results on page: {this.state.results.length}</p>
-                    {statistics && <table>
+                    {statistics && <table className="striped">
                         <thead>
                             <tr>
                                 <th> </th>
@@ -176,7 +176,7 @@ export default class Search extends Component {
                     {this.createPagination()}
                 </div>
                 <div id="search-page-results">
-                    {results.length > 1 && <table className="scrollable">
+                    {results.length > 1 && <table className="scrollable striped">
                         <thead>
                             <tr>
                                 {Object.keys(results[1]).map(key =>
