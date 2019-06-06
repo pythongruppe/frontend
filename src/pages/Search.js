@@ -5,7 +5,13 @@ export default class Search extends Component {
 
     state = {
         propertyTypes: [],
-        parameters: {},
+        parameters: {
+            nearby: {
+                "max_distance": 2,
+                "latitude": 55.837491199999995, 
+                "longitude": 12.4346368
+            }
+        },
         statistics: null,
         results: [],
         count: 0,
@@ -46,6 +52,8 @@ export default class Search extends Component {
         Object.keys(parameters).forEach(k => {
             if (k == 'zip_codes')
                 result[k] = parameters[k]
+            else if (k == 'nearby')
+                result[k] = parameters[k]
             else
                 result[k] = parseInt(parameters[k])
         })
@@ -68,6 +76,18 @@ export default class Search extends Component {
         }))
     }
 
+    onNearbyParameterChange = (e) => {
+        const {name, value} = e.target
+        this.setState(prev => {
+            const nearby = prev.parameters.nearby || {}
+            nearby[name] = Number(value)
+            return {
+                ...prev,
+                nearby: nearby
+            }
+        })
+    }
+
     changePage = (e) => {
         const target = e.target;
         e.preventDefault()
@@ -86,6 +106,8 @@ export default class Search extends Component {
     }
 
     render() {
+
+console.log(this.state)
 
         const { results, statistics } = this.state;
 
@@ -142,6 +164,12 @@ export default class Search extends Component {
                                         )}
                                     </select>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td>nearby</td>
+                                <td><input type="number" onChange={this.onNearbyParameterChange} name="max_distance" placeholder="max distance (km)" defaultValue={1} /></td>
+                                <td><input type="number" onChange={this.onNearbyParameterChange} name="latitude" placeholder="latitude" defaultValue={55.837491199999995}/></td>
+                                <td><input type="number" onChange={this.onNearbyParameterChange} name="longitude" placeholder="longitude" defaultValue={12.4346368}/></td>
                             </tr>
                             <tr colSpan={3}>
                                 <button onClick={() => this.page(1)} style={{ padingTop: '20px' }} className="submit">Filter</button>
