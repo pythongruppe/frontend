@@ -80,6 +80,7 @@ export default class Search extends Component {
         return (<div className="pagination">
             <form onSubmit={(e) => this.changePage(e)}>
                 <input name="page" type="number" step="1" min={1} max={pages} value={this.state.currentPageInput} onChange={(e) => this.setState({ currentPageInput: parseInt(e.target.value) })} />
+                <span> of <span style={{fontWeight: "bold"}}>{pages}</span> pages</span>
             </form>
         </div>)
     }
