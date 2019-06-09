@@ -83,7 +83,7 @@ ul.navigation {
 }
 
 ul.navigation li {
-  display:block;
+  display: block;
   text-align: left;
 }
 
@@ -98,4 +98,16 @@ ul.navigation li a {
 
 ul.navigation li a:hover {
   color: red;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+input, select {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
 }
