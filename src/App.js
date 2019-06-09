@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './pages/Search';
-import Graphs from "./pages/Graphs"
+import Graphs from "./pages/Graphs";
+import HeatMap from "./pages/HeatMap";
 import PredictPrice from "./pages/PredictPrice"
 import './App.css';
 import { BrowserRouter, Route, Link } from "react-router-dom";
@@ -10,6 +11,9 @@ function App() {
     <BrowserRouter>
       <aside>
         <ul className="navigation">
+        <li>
+        <Link to="/">Heatmap</Link>
+          </li>
         <li>
             <Link to="/graphs">Graphs</Link>
           </li>
@@ -25,6 +29,7 @@ function App() {
         </ul>
       </aside>
       <main>
+        <Route exact={true} path="/" component={HeatMap} />
         <Route path="/graphs" component={Graphs} />
         <Route path="/search" component={Search} />
         <Route path="/predict-price" component={PredictPrice} />
