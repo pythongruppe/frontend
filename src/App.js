@@ -2,6 +2,7 @@ import React from 'react';
 import Search from './pages/Search';
 import Graphs from "./pages/Graphs";
 import HeatMap from "./pages/HeatMap";
+import ChoroplethMap from "./pages/ChoroplethMap";
 import PredictPrice from "./pages/PredictPrice"
 import PredictPropertyType from "./pages/PredictPropertyType"
 import './App.css';
@@ -12,10 +13,13 @@ function App() {
     <BrowserRouter>
       <aside>
         <ul className="navigation">
-        <li>
-        <Link to="/">Heatmap</Link>
+          <li>
+            <Link to="/">Heatmap</Link>
           </li>
-        <li>
+          <li>
+            <Link to="/choropleth">Choropleth map</Link>
+          </li>
+          <li>
             <Link to="/graphs">Graphs</Link>
           </li>
           <li>
@@ -31,6 +35,7 @@ function App() {
       </aside>
       <main>
         <Route exact={true} path="/" component={HeatMap} />
+        <Route path="/choropleth" component={ChoroplethMap} />
         <Route path="/graphs" component={Graphs} />
         <Route path="/search" component={Search} />
         <Route path="/predict-price" component={PredictPrice} />

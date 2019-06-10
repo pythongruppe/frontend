@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Iframe from 'react-iframe'
 import { url } from "../config"
 
-export default class HeatMap extends Component {
+export default class ChoroplethMap extends Component {
 
     state = {
         key: 'cash_price'
@@ -24,7 +24,7 @@ export default class HeatMap extends Component {
                     <option>rooms</option>
                     <option>year</option>
                 </select>
-                <Iframe url={url + "static/heatmap_" + this.state.key + ".html"}
+                <Iframe url={url + "static/choropleth_" + this.state.key + ".html"}
                     width="max-width"
                     height="800px"
                     display="initial" />
