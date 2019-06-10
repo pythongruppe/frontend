@@ -8,15 +8,6 @@ export default class PredictPrice extends Component {
         results: null
     }
 
-    async fetchPropertyTypes() {
-        const response = await fetch(url + 'property-types')
-        return response.json()
-    }
-
-    async componentDidMount() {
-        this.setState({ propertyTypes: await this.fetchPropertyTypes() })
-    }
-
     onParameterChange = (e) => {
         const { name, value } = e
         this.setState(prev => ({
@@ -39,7 +30,7 @@ export default class PredictPrice extends Component {
     }
 
     predict = async parameters => {
-        const response = await fetch(url + 'predict', {
+        const response = await fetch(url + 'predict-property-type', {
             method: 'POST',
             body: JSON.stringify(parameters),
             headers: {
@@ -55,10 +46,10 @@ export default class PredictPrice extends Component {
         return (
             <>
                 {this.state.result && <div>
-                    <p>Prediction results: </p>
-                    <p>Cash price: <strong>{this.state.result.cash_prediction}</strong></p>
-                    <p>Down payment: <strong>{this.state.result.down_payment}</strong></p>
-                    <p>Monthly payment: <strong>{this.state.result.monthly_payment}</strong></p>
+                    <p>Classification results: </p>
+                    <p>Name: <strong>{this.state.result.name}</strong></p>
+                    <p>Value: <strong>{this.state.result.value}</strong></p>
+                    <p>Accuracy: <strong>{this.state.result.accuracy}</strong></p>
                 </div>}
                 <form onSubmit={this.onFormSubmit}>
                     <div>
@@ -72,14 +63,6 @@ export default class PredictPrice extends Component {
                     <div>
                         <label>Property Area</label>
                         <input name="area_property" type="number" step="1" defaultValue={1000} />
-                    </div>
-                    <div>
-                        <label>Property Type</label>
-                        <select name="property_type" defaultValue={1}>
-                            {this.state.propertyTypes.map(t =>
-                                <option key={t.value} value={t.value}>{t.name}</option>
-                            )}
-                        </select>
                     </div>
                     <div>
                         <label>Rooms</label>

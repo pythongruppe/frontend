@@ -3,6 +3,7 @@ import Search from './pages/Search';
 import Graphs from "./pages/Graphs";
 import HeatMap from "./pages/HeatMap";
 import PredictPrice from "./pages/PredictPrice"
+import PredictPropertyType from "./pages/PredictPropertyType"
 import './App.css';
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
@@ -33,7 +34,7 @@ function App() {
         <Route path="/graphs" component={Graphs} />
         <Route path="/search" component={Search} />
         <Route path="/predict-price" component={PredictPrice} />
-        <Route path="/predict-property-type" component={FourZeroFour} />
+        <Route path="/predict-property-type" component={PredictPropertyType} />
       </main>
     </BrowserRouter>
   );
