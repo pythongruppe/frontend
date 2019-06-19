@@ -56,7 +56,7 @@ export default class PredictPrice extends Component {
             <>
                 {this.state.result && <div>
                     <p>Prediction results: </p>
-                    <p>Cash price: <strong>{this.state.result.cash_prediction}</strong></p>
+                    <p>Cash price: <strong>{this.state.result.cash_price}</strong></p>
                     <p>Down payment: <strong>{this.state.result.down_payment}</strong></p>
                     <p>Monthly payment: <strong>{this.state.result.monthly_payment}</strong></p>
                 </div>}

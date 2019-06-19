@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from './pages/Search';
 import Graphs from "./pages/Graphs";
-import HeatMap from "./pages/HeatMap";
+import Distribution from "./pages/Distribution";
 import ChoroplethMap from "./pages/ChoroplethMap";
 import PredictPrice from "./pages/PredictPrice"
 import PredictPropertyType from "./pages/PredictPropertyType"
@@ -14,7 +14,7 @@ function App() {
       <aside>
         <ul className="navigation">
           <li>
-            <Link to="/">Heatmap</Link>
+            <Link to="/">Distribution</Link>
           </li>
           <li>
             <Link to="/choropleth">Choropleth map</Link>
@@ -34,7 +34,7 @@ function App() {
         </ul>
       </aside>
       <main>
-        <Route exact={true} path="/" component={HeatMap} />
+        <Route exact={true} path="/" component={Distribution} />
         <Route path="/choropleth" component={ChoroplethMap} />
         <Route path="/graphs" component={Graphs} />
         <Route path="/search" component={Search} />
